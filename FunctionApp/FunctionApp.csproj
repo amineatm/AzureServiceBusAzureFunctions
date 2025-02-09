@@ -1,0 +1,77 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<AzureFunctionsVersion>v4</AzureFunctionsVersion>
+		<!-- Version 4 for Azure Functions -->
+		<OutputType>Exe</OutputType>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+		<!-- The Microsoft.NET.Sdk.Functions package already includes the necessary dependencies for Azure Functions. -->
+		<PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.5.0" />
+		<!-- Removed Worker and Extensions packages unless you are specifically using them -->
+		<PackageReference Include="Microsoft.Azure.ServiceBus" Version="5.2.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="host.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="local.settings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<CopyToPublishDirectory>Never</CopyToPublishDirectory>
+		</None>
+	</ItemGroup>
+	<Project Sdk="Microsoft.NET.Sdk">
+
+		<PropertyGroup>
+			<TargetFramework>net8.0</TargetFramework>
+			<AzureFunctionsVersion>v4</AzureFunctionsVersion>
+			<!-- Version 4 for Azure Functions -->
+			<OutputType>Exe</OutputType>
+			<ImplicitUsings>enable</ImplicitUsings>
+			<Nullable>enable</Nullable>
+		</PropertyGroup>
+
+		<ItemGroup>
+			<FrameworkReference Include="Microsoft.AspNetCore.App" />
+			<!-- The Microsoft.NET.Sdk.Functions package already includes the necessary dependencies for Azure Functions -->
+			<PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.5.0" />
+			<!-- Removed Worker and Extensions packages unless you are specifically using them -->
+			<PackageReference Include="Microsoft.Azure.ServiceBus" Version="5.2.0" />
+		</ItemGroup>
+
+		<ItemGroup>
+			<None Update="host.json">
+				<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			</None>
+			<None Update="local.settings.json">
+				<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+				<CopyToPublishDirectory>Never</CopyToPublishDirectory>
+			</None>
+		</ItemGroup>
+
+		<ItemGroup>
+			<Using Include="System.Threading.ExecutionContext" Alias="ExecutionContext" />
+		</ItemGroup>
+
+		<ItemGroup>
+			<ProjectReference Include="..\ServiceBusShared\ServiceBusShared.csproj" />
+		</ItemGroup>
+
+	</Project>
+
+
+	<ItemGroup>
+		<Using Include="System.Threading.ExecutionContext" Alias="ExecutionContext" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\ServiceBusShared\ServiceBusShared.csproj" />
+	</ItemGroup>
+
+</Project>

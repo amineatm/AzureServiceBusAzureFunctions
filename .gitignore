@@ -1,0 +1,34 @@
+# Ignore Visual Studio temporary files, build results, and
+# Include source files to ignore certain folders
+.vscode/
+.vs/
+**/bin/
+**/obj/
+**/*.user
+**/*.rsuser
+**/*.suo
+**/*.userosscache
+**/*.sln.docstates
+.DS_Store
+Thumbs.db
+
+# Ignore build folders and files
+bin/
+obj/
+
+# Ignore node_modules (if using Node.js)
+node_modules/
+
+# Ignore npm package files
+package-lock.json
+yarn.lock
+
+# Ignore logs
+logs
+*.log
+npm-debug.log*
+
+# Ignore other common files and folders
+.idea/
+*.log
+*.DS_Store

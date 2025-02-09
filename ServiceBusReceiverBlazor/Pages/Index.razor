@@ -1,0 +1,43 @@
+﻿@page "/"
+@using ServiceBusShared.Models;
+
+@inject IServiceBusReceiverService ServiceBusReceiverService
+@inject NavigationManager Navigation
+
+<h3>Products</h3>
+
+@if (ServiceBusReceiverService.Products.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Reference</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in ServiceBusReceiverService.Products)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.Reference</td>
+                    <td>@product.Description</td>
+                    <td>@product.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No products received yet.</p>
+}
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await ServiceBusReceiverService.StartReceivingMessagesAsync();
+    }
+}
